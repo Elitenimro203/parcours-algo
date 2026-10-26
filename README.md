@@ -1,80 +1,95 @@
-# Parcours Algo — Portfolio d'ingénieur
+# parcours-algo
 
-Dépôt de travail regroupant l'ensemble des algorithmes, structures de données
-et patterns d'entretien étudiés durant le parcours (ESATIC → M2 MBDS → CMU
-Africa), avec pour chaque sujet : pseudo-code, implémentation Python testée,
-notes, et — désormais — les éléments qui font qu'un projet ouvre vraiment des
-portes (tests, CI, article technique, déploiement).
+![tests](https://github.com/Elitenimro203/parcours-algo/actions/workflows/tests.yml/badge.svg)
 
-Chaque brique s'appuie autant que possible sur un cas d'usage réel (GreenGrow,
-PrintFlow OS, ou un projet standalone à plus fort signal marché selon le
-sujet) plutôt que sur un exercice isolé.
+Mon parcours d'ingénierie algorithmique, de la complexité à la programmation
+dynamique. Chaque notion est travaillée en trois temps : **pseudo-code**,
+**implémentation Python testée**, **notes** (complexité prouvée, pièges, cas
+d'usage). Chaque palier se ferme par un **projet réel déployé**, pas par un
+exercice jetable.
 
-## Organisation
+> Kouadio · Master MBDS, ESATIC (Abidjan) · Python, FastAPI, SQL, React/TypeScript
+
+## Feuille de route (26 oct. 2026 → 3 janv. 2027)
+
+| Semaine | Thème | Pattern d'entretien | Livrable |
+|---|---|---|---|
+| S1 | Complexité, hachage, tri rapide | Two pointers | Dépôt public + CI pytest |
+| S2 | Tri fusion, tri par tas, dichotomie | Binary search on answer | Module tris fermé + article 1 |
+| S3 | Listes chaînées | Sliding window | Entretien blanc 1 |
+| S4 | Piles, files, deques | Pile monotone | File d'impression PrintFlow (C) |
+| S5 | Arbres binaires, ABR | Parcours DFS/BFS | Bibliothèque d'arbres testée |
+| S6 | Tas, trie, union-find | Backtracking | Module structures fermé + article 2 |
+| S7 | Graphes : BFS, DFS, tri topologique | Grilles comme graphes | Moteur de graphe testé |
+| S8 | Dijkstra, Prim, Kruskal | Greedy | **Capstone Vigie des Eaux** déployé + article 3 |
+| S9 | Programmation dynamique 1D | Mémoïsation, tabulation | Bibliothèque DP testée |
+| S10 | DP 2D, sac à dos | Révision des patterns | **Capstone GreenGrow** déployé + article 4 |
+
+Environ 130 exercices LeetCode répartis sur les 10 semaines, chacun noté
+(pattern, complexité, erreur commise) dans le `notes.md` de son dossier.
+
+## Avancement
+
+- [x] Tri à bulle
+- [x] Tri par sélection
+- [x] Tri par insertion
+- [ ] Tri rapide · tri fusion · tri par tas
+- [ ] Structures de données
+- [ ] Graphes
+- [ ] Programmation dynamique
+- [ ] Portfolio final
+
+## Capstones
+
+| Projet | Algorithmes | Problème réel |
+|---|---|---|
+| **Vigie des Eaux** (S8) | BFS, Dijkstra | Trouver les zones en aval d'un point de pollution et le trajet d'intervention le plus court sur un réseau hydrographique |
+| **GreenGrow** (S10) | Sac à dos 0/1 | Choisir les cultures à placer dans des bacs selon la surface, l'eau disponible et le rendement attendu |
+
+Projets appliqués intermédiaires : file d'impression de **PrintFlow OS** (S4,
+file circulaire en C), recherche par préfixe et classement des retards pour
+**GestPresence** (S6, trie et tas derrière une route FastAPI).
+
+## Organisation du dépôt
 
 ```
-parcours-algo/
-├── 00-patterns-entretien/        # Transverse — en parallèle du reste
-│   ├── two-pointers/
-│   ├── sliding-window/
-│   ├── backtracking/
-│   ├── binary-search-on-answer/
-│   └── greedy/
-├── 00-fondamentaux-python/       # Transverse — mécanismes du langage rencontrés
-├── 01-tris/
-│   ├── 01-tri-bulle/             ✅
-│   ├── 02-tri-selection/         ✅
-│   ├── 03-tri-insertion/         ✅
-│   ├── 04-tri-rapide/            ⏳
-│   ├── 05-tri-fusion/            ⏳
-│   └── 06-tri-tas/               ⏳
-│   └── 🎯 PROJET — Moteur de tri GreenGrow (benchmark comparatif)
-├── 02-structures-donnees/        # Piles, files, listes, BST, AVL, hachage ⏳
-│   └── 🎯 PROJET — Gestionnaire de file PrintFlow
-├── 03-graphes/                   # BFS, DFS, Dijkstra, A*, Kruskal/Prim ⏳
-│   └── 🎯 PROJET — Réseau de zones GreenGrow (+ déploiement minimal)
-├── 04-programmation-dynamique/   ⏳
-│   └── 🎯 PROJET — Allocation ressources GreenGrow (+ déploiement minimal)
-├── 05-optimisation-multiobjectif/ # ✅ Pareto, NSGA-II — à ranger ici
-├── 06-revisions-espacees/        # Suivi des révisions courtes espacées
-├── 07-portfolio-final/           # Synthèse des capstones (à créer en fin de parcours)
-├── 08-checklists/                # Checklist de sortie obligatoire par module
-└── projets-appliques/
-    ├── greengrow/
-    └── printflow/
+00-fondamentaux-python/       mécanismes du langage (__main__, pytest…)
+00-patterns-entretien/        two-pointers, sliding-window, backtracking, greedy…
+01-tris/                      bulle, sélection, insertion, rapide, fusion, tas
+02-structures-donnees/
+03-graphes/
+04-programmation-dynamique/
+05-optimisation-multiobjectif/
+06-revisions-espacees/        exercices ratés repris à J+1, J+7, J+21
+07-portfolio-final/
+08-checklists/
+projets-appliques/            greengrow, printflow…
 ```
 
-## Convention par sujet
+Chaque dossier d'algorithme suit la même forme :
 
-Chaque dossier de sujet contient :
-- `pseudocode.md`
-- `<nom_algo>.py` — testé, avec vrais tests unitaires (pas un `assert` isolé)
-- `notes.md` — complexité, pièges, cas d'usage réel, signal de reconnaissance
-  (pour les patterns d'entretien)
+```
+01-tris/03-tri-insertion/
+├── pseudocode.md
+├── tri_insertion.py
+├── test_tri_insertion.py
+└── notes.md          complexité (temps et espace) et sa preuve
+```
 
-Voir `08-checklists/README.md` pour les critères de sortie complets (tests,
-CI, article, éventuel déploiement).
+## Lancer les tests
 
-## Règle de fonctionnement
+```bash
+python -m pip install -r requirements-dev.txt
+pytest
+```
 
-C'est Kouadio qui écrit le pseudo-code et le code à chaque palier. Claude pose
-les questions, vérifie, corrige, pousse plus loin — ne résout pas les
-exercices à sa place. Le choix du projet à chaque palier (GreenGrow/PrintFlow
-vs projet standalone à plus forte valeur de portfolio) est évalué au cas par
-cas selon le sujet et le niveau démontré en session.
+La CI GitHub Actions relance `pytest` à chaque push et chaque pull request.
 
-## Statut d'avancement
+## Checklist de sortie d'un module
 
-| Sujet | Statut |
-|---|---|
-| Patterns d'entretien | ⏳ À démarrer (en parallèle) |
-| Tri à bulle | ✅ Acquis |
-| Tri par sélection | ✅ Acquis |
-| Tri par insertion | ✅ Acquis |
-| Tri rapide / fusion / tas | ⏳ À venir |
-| Structures de données | ⏳ À venir |
-| Graphes | ⏳ À venir |
-| Programmation dynamique | ⏳ À venir |
-| Optimisation multi-objectif | ✅ Acquis (à ranger dans ce dépôt) |
+Un module n'est fermé que si les cinq cases sont cochées : code, tests
+unitaires, complexité prouvée, README, article technique.
 
-Voir `ROADMAP.md` pour le détail des prochains paliers.
+## Articles
+
+À venir : un article par module fermé (Medium ou dev.to).

@@ -1,15 +1,18 @@
 # Tri par insertion — Pseudo-code
 
 ## Cas d'usage réel
+
 Trier des relevés d'humidité (%) de capteurs GreenGrow avant affichage sur le
 dashboard.
 
 Exemple de jeu de données :
+
 ```
 [42, 15, 38, 27, 8, 50]
 ```
 
 ## Pseudo-code
+
 _(à compléter pendant la session, au fur et à mesure du raisonnement)_
 
 ```
@@ -53,8 +56,9 @@ Fin
 ```
 
 ## Traces manuelles
+
 _(noter ici le déroulé pas à pas sur l'exemple GreenGrow)_
 
 | Passe | État du tableau | Élément inséré | Position finale |
-|---|---|---|---|
-| 1 |  |  |  |
+| ----- | ---------------- | ------------------ | --------------- |
+| 1     |                  |                    |                 |
